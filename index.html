@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Karla ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #e74c3c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden; 
+            position: relative;
+        }
+        
+        /* Animación de destellos y corazones sutiles */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bg-element {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 24px;
+            animation: floatUp 9s linear infinite;
+            bottom: -50px;
+        }
+        .bg-element:nth-child(1) { left: 15%; animation-duration: 8s; font-size: 28px; }
+        .bg-element:nth-child(2) { left: 35%; animation-duration: 11s; font-size: 18px; animation-delay: 2s;}
+        .bg-element:nth-child(3) { left: 55%; animation-duration: 7s; font-size: 32px; animation-delay: 1s;}
+        .bg-element:nth-child(4) { left: 75%; animation-duration: 10s; font-size: 22px; animation-delay: 3s;}
+        .bg-element:nth-child(5) { left: 85%; animation-duration: 9s; font-size: 38px; animation-delay: 4s;}
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Tarjeta Principal */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 50px 35px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, #e74c3c, #ff7e5f);
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #e74c3c;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        p {
+            color: #4a4a4a;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #2c3e50;
+            font-style: italic;
+            margin-bottom: 35px;
+            margin-top: 10px;
+        }
+
+        /* Botón Interactivo */
+        .btn {
+            background: linear-gradient(to right, #e74c3c, #ff7e5f);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+            outline: none;
+            width: 85%;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Mensaje Oculto */
+        #mensajeExito {
+            display: none;
+            margin-top: 15px;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .heart-icon {
+            font-size: 3.5rem;
+            color: #e74c3c;
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        .success-text {
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="floating-elements">
+        <div class="bg-element">✨</div>
+        <div class="bg-element">❤</div>
+        <div class="bg-element">✨</div>
+        <div class="bg-element">❤</div>
+        <div class="bg-element">✨</div>
+    </div>
+
+    <div class="card">
+        <h1>Karla</h1>
+        <div class="subtitle">Un detalle a la antigua</div>
+        
+        <div id="contenidoOriginal">
+            <p>Dicen que el romanticismo se está perdiendo, pero me propuse demostrarte lo contrario.</p>
+            <p>Tengo guardadas las serenatas, las flores y más sorpresas para después. Por ahora, mi único plan es caminar a tu lado por la presa, dejar que el viento nos despeje y tener la excusa perfecta para seguir descubriendo esa sonrisa que me cautivó.</p>
+            
+            <p class="highlight">¿Me concedes el honor de ser tu compañero de ejercicio?</p>
+            
+            <button class="btn" onclick="aceptarInvitacion()">Sí, acepto</button>
+        </div>
+
+        <div id="mensajeExito">
+            <div class="heart-icon">❤️</div>
+            <p class="success-text">¡Es un privilegio!<br><br>Un verdadero caballero siempre va por su dama. Ponte cómoda, yo paso a buscarte. Hasta tengo lista una buena playlist con algo de Luis Miguel para el camino.</p>
+        </div>
+    </div>
+
+    <script>
+        function aceptarInvitacion() {
+            document.getElementById('contenidoOriginal').style.display = 'none';
+            document.getElementById('mensajeExito').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

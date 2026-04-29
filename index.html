@@ -18,14 +18,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            overflow: hidden; 
+            padding: 40px 20px; /* Un poco más de espacio arriba y abajo */
+            overflow-x: hidden; /* Permite hacer scroll hacia abajo, pero no hacia los lados */
             position: relative;
         }
         
         /* Animación de destellos y corazones sutiles */
         .floating-elements {
-            position: absolute;
+            position: fixed; /* Cambiado a fixed para que no afecte el tamaño de la página */
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
@@ -46,7 +48,7 @@
 
         @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
         }
 
         /* Tarjeta Principal */
@@ -54,13 +56,14 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 25px;
-            padding: 50px 35px;
+            padding: 45px 30px;
             max-width: 420px;
             width: 100%;
             text-align: center;
             box-shadow: 0 20px 50px rgba(0,0,0,0.4);
             position: relative;
             z-index: 1;
+            margin: auto; /* Asegura que se centre bien si hay scroll */
         }
 
         .card::before {
@@ -102,7 +105,7 @@
 
         .highlight {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #2c3e50;
             font-style: italic;
             margin-bottom: 35px;
@@ -125,6 +128,7 @@
             outline: none;
             width: 85%;
             letter-spacing: 1px;
+            margin-bottom: 10px;
         }
 
         .btn:hover {

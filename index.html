@@ -2,94 +2,78 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Karla ✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Reseteo y Configuraciones Básicas */
+        /* Reseteo Básico */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html, body {
-            /* Usamos dynamic viewport height (dvh) para móviles, fallback a vh */
-            min-height: 100vh;
-            min-height: 100dvh; 
+        /* Cuerpo principal: Desplazamiento natural y nativo */
+        body {
             font-family: 'Montserrat', sans-serif;
+            background: #2c3e50; /* Color de fondo base */
             background: linear-gradient(135deg, #2c3e50 0%, #e74c3c 100%);
-            /* PERMITE DESLIZAMIENTO VERTICAL */
-            overflow-x: hidden; 
-            overflow-y: auto; 
-            position: relative;
-        }
-        
-        /* Contenedor Principal: Garantiza el scroll en móviles */
-        .main-container {
-            width: 100%;
-            min-height: 100dvh;
-            display: flex;
-            justify-content: center;
-            /* NO CENTRAMOS VERTICALMENTE EN MÓVILES PEQUEÑOS PARA EVITAR BLOQUEOS */
-            align-items: flex-start; 
-            padding: 50px 20px; /* Espacio generoso arriba y abajo */
-            z-index: 1;
-            position: relative;
+            background-attachment: fixed; /* El fondo no se mueve al hacer scroll */
+            color: #333;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Animación de destellos y corazones fijos de fondo */
-        .floating-elements {
+        /* Capa de animación separada para no bloquear el scroll del celular */
+        .background-animation {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
             pointer-events: none;
-            z-index: 0;
         }
+
         .bg-element {
             position: absolute;
             color: rgba(255, 255, 255, 0.1);
-            font-size: 24px;
-            animation: floatUp 10s linear infinite;
-            bottom: -50px;
+            bottom: -100px;
+            animation: floatUp linear infinite;
         }
-        .bg-element:nth-child(1) { left: 10%; animation-duration: 9s; font-size: 28px; }
-        .bg-element:nth-child(2) { left: 30%; animation-duration: 12s; font-size: 18px; animation-delay: 2s;}
-        .bg-element:nth-child(3) { left: 50%; animation-duration: 8s; font-size: 32px; animation-delay: 1s;}
-        .bg-element:nth-child(4) { left: 70%; animation-duration: 11s; font-size: 22px; animation-delay: 3s;}
-        .bg-element:nth-child(5) { left: 90%; animation-duration: 10s; font-size: 38px; animation-delay: 4s;}
+
+        .bg-element:nth-child(1) { left: 15%; animation-duration: 9s; font-size: 28px; }
+        .bg-element:nth-child(2) { left: 35%; animation-duration: 12s; font-size: 18px; animation-delay: 2s; }
+        .bg-element:nth-child(3) { left: 55%; animation-duration: 8s; font-size: 32px; animation-delay: 1s; }
+        .bg-element:nth-child(4) { left: 75%; animation-duration: 11s; font-size: 22px; animation-delay: 3s; }
+        .bg-element:nth-child(5) { left: 85%; animation-duration: 10s; font-size: 38px; animation-delay: 4s; }
 
         @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Contenedor que centra la tarjeta y da espacio seguro arriba y abajo */
+        .content-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            width: 100%;
         }
 
         /* Tarjeta Principal */
         .card {
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(10px);
-            border-radius: 25px;
+            border-radius: 20px;
             padding: 45px 30px;
-            max-width: 420px;
             width: 100%;
+            max-width: 420px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-            /* Asegura que no se pegue al borde superior si no cabe */
-            margin-top: auto; 
-            margin-bottom: auto;
-        }
-
-        /* Media Query para pantallas pequeñas: ajusta márgenes */
-        @media (max-height: 650px) {
-            .main-container {
-                padding: 30px 15px;
-            }
-            .card {
-                margin-top: 0;
-                margin-bottom: 0;
-            }
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            position: relative;
         }
 
         .card::before {
@@ -100,8 +84,8 @@
             width: 100%;
             height: 6px;
             background: linear-gradient(to right, #e74c3c, #ff7e5f);
-            border-top-left-radius: 25px;
-            border-top-right-radius: 25px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
         }
 
         h1 {
@@ -118,7 +102,7 @@
             color: #e74c3c;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             font-weight: 500;
         }
 
@@ -134,7 +118,7 @@
             font-size: 1.3rem;
             color: #2c3e50;
             font-style: italic;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             margin-top: 10px;
         }
 
@@ -143,7 +127,7 @@
             background: linear-gradient(to right, #e74c3c, #ff7e5f);
             color: white;
             border: none;
-            padding: 18px 30px;
+            padding: 16px 25px;
             font-size: 1rem;
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
@@ -152,10 +136,10 @@
             box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
             transition: all 0.3s ease;
             outline: none;
-            width: 90%; /* Un poco más ancho en móvil */
+            width: 90%;
             letter-spacing: 1px;
-            display: inline-block; /* Asegura buen renderizado */
-            margin-top: 10px;
+            display: inline-block;
+            margin-bottom: 10px;
         }
 
         .btn:hover {
@@ -170,8 +154,8 @@
         /* Mensaje Oculto */
         #mensajeExito {
             display: none;
-            margin-top: 15px;
-            animation: fadeIn 1s ease forwards;
+            margin-top: 10px;
+            animation: fadeIn 0.8s ease forwards;
         }
 
         .heart-icon {
@@ -198,13 +182,12 @@
             50% { transform: scale(1.15); }
             100% { transform: scale(1); }
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Fondo de elementos flotantes fijo -->
-    <div class="floating-elements">
+    <!-- Capa de animación aislada -->
+    <div class="background-animation">
         <div class="bg-element">✨</div>
         <div class="bg-element">❤</div>
         <div class="bg-element">✨</div>
@@ -212,8 +195,8 @@
         <div class="bg-element">✨</div>
     </div>
 
-    <!-- Contenedor Principal Scrollable -->
-    <div class="main-container">
+    <!-- Contenido principal que fluye naturalmente -->
+    <div class="content-wrapper">
         <div class="card">
             <h1>Karla</h1>
             <div class="subtitle">Un detalle a la antigua</div>
@@ -236,12 +219,11 @@
 
     <script>
         function aceptarInvitacion() {
-            // Oculta el contenido original y muestra el mensaje de éxito
             document.getElementById('contenidoOriginal').style.display = 'none';
             document.getElementById('mensajeExito').style.display = 'block';
             
-            // Forzar scroll hacia arriba para ver el mensaje de éxito completo
-            window.scrollTo(0, 0);
+            // Si la pantalla es muy pequeña, hace un scroll suave hacia arriba para que vea el corazón
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 
